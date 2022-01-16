@@ -5,45 +5,27 @@
 	</head>
 	<body>
 		<h1>NAPFA Score Checker Results</h1>
-		<p>Gender: <b>{{gender}}</b></p>
-		<p>Age: <b>{{age}}</b></p>
+		<p>Gender: {{gender}}&emsp;&emsp;&emsp;&emsp;Age: {{age}}</p>
 		<table width="100%" style="text-align:left">
 			<tr>
 				<th>Station</th>
 				<th>Score</th>
 				<th>Grade</th>
+				<th>Points</th>
+				<th>Score to Next Grade</th>
 			</tr>
+			{% for i in range(6) %}
 			<tr>
-				<td>Sit Up</td>
-				<td>{{score[0]}}</td>
-				<td>{{grade[0]}}</td>
+				<td>{{stations[i]}}</td>
+				<td>{{scores[i]}}</td>
+				<td>{{grades[i]}}</td>
+				<td>{{points[i]}}</td>
+				<td>{{next_scores[i]}}</td>
 			</tr>
-			<tr>
-				<td>Jump</td>
-				<td>{{score[1]}}cm</td>
-				<td>{{grade[1]}}</td>
-			</tr>
-			<tr>
-				<td>Sit and Reach</td>
-				<td>{{score[2]}}cm</td>
-				<td>{{grade[2]}}</td>
-			</tr>
-			<tr>
-				<td>Pull Up</td>
-				<td>{{score[3]}}</td>
-				<td>{{grade[3]}}</td>
-			</tr>
-			<tr>
-				<td>Shuttle Run</td>
-				<td>{{score[4]}}s</td>
-				<td>{{grade[4]}}</td>
-			</tr>
-			<tr>
-				<td>2.4km Run</td>
-				<td>{{score[5]}}</td>
-				<td>{{grade[5]}}</td>
-			</tr>
+			{% endfor %}
 		</table>
+		<p>Total Points: {{total_points}}</p>
+		<p>Award: {{award}}</p>
 		<a href="{{ url_for('index') }}"><button>Back</button></a>
 	</body>
 </html>

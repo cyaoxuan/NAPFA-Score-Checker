@@ -8,7 +8,7 @@
 		<h1>NAPFA Score Checker</h1>
 		<form action="{{ url_for('display') }}" method="GET">
 			<p>
-				Gender: <select name="gender"><option value="M">M</option><option value="F">F</option></select>	
+				Gender: <select name="gender"><option value="M">M</option><option value="F">F</option></select>&emsp;&emsp;&emsp;&emsp;	
 				Age: <select name="age">{% for i in range(12,20) %}<option value="{{i}}">{{i}}</option>{% endfor %}</select>
 			</p>
 			<table width="100%" style="text-align:left">
@@ -28,7 +28,7 @@
 					<td><input name="SitReach" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>cm</td>
 				</tr>
 				<tr>
-					<td>Pull Up</td>
+					<td>(Inclined) Pull Up</td>
 					<td><input name="PullUp" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
 				</tr>
 				<tr>
