@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NAPFA Test System</title>
+		<link rel="stylesheet" href="static/style.css">
+	</head>
+	<body>
+		<h1>NAPFA Results</h1>
+		<form action="{{ url_for('display') }}" method="GET">
+			<p>
+				Gender: <select name="gender"><option value="M">M</option><option value="F">F</option></select>	
+				Age: <select name="age">{% for i in range(12,20) %}<option value={{i}}>{{i}}</option>{% endfor %}</select>
+			</p>
+			<table width="100%" style="text-align:left">
+				<tr>
+					<th>Station</th>
+					<th>Score</th>
+				</tr>
+				<tr>
+					<td>Sit Up</td>
+					<td><input name="SitUp" type="number"></td>
+				</tr>
+				<tr>
+					<td>Standing Board Jump</td>
+					<td><input name="Jump" type="number"></td>
+				<tr>
+					<td>Sit and Reach</td>
+					<td><input name="SitReach" type="number"></td>
+				</tr>
+				<tr>
+					<td>Pull Up</td>
+					<td><input name="PullUp" type="number"></td>
+				</tr>
+				<tr>
+					<td>Shuttle Run</td>
+					<td><input name="Shuttle" type="text"></td>
+				<tr>
+					<td>2.4km Run</td>
+					<td><input name="Run24" type="text"></td>
+				</tr>
+			</table>
+			<p><input type="submit" value="Check Grades"></p>
+		</form>
+	</body>
+</html>
