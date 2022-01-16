@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>NAPFA Test System</title>
+		<title>NAPFA Score Checker</title>
 	</head>
 	<body>
-		<h1>NAPFA Results</h1>
+		<h1>NAPFA Score Checker Results</h1>
 		<p>Gender: <b>{{gender}}</b></p>
 		<p>Age: <b>{{age}}</b></p>
-		<table>
+		<table width="100%" style="text-align:left">
 			<tr>
-				<th>Sit Up</th>
-				<td>{{data[0]}}</td>
+				<th>Station</th>
+				<th>Score</th>
+				<th>Grade</th>
 			</tr>
 			<tr>
-				<th>Jump</th>
-				<td>{{data[1]}}</td>
+				<td>Sit Up</td>
+				<td>{{score[0]}}</td>
+				<td>{{grade[0]}}</td>
 			</tr>
 			<tr>
-				<th>Sit and Reach</th>
-				<td>{{data[2]}}</td>
+				<td>Jump</td>
+				<td>{{score[1]}}cm</td>
+				<td>{{grade[1]}}</td>
 			</tr>
 			<tr>
-				<th>Pull Up</th>
-				<td>{{data[3]}}</td>
+				<td>Sit and Reach</td>
+				<td>{{score[2]}}cm</td>
+				<td>{{grade[2]}}</td>
 			</tr>
 			<tr>
-				<th>Shuttle Run</th>
-				<td>{{data[4]}}</td>
+				<td>Pull Up</td>
+				<td>{{score[3]}}</td>
+				<td>{{grade[3]}}</td>
 			</tr>
 			<tr>
-				<th>2.4km Run</th>
-				<td>{{data[5]}}</td>
+				<td>Shuttle Run</td>
+				<td>{{score[4]}}s</td>
+				<td>{{grade[4]}}</td>
+			</tr>
+			<tr>
+				<td>2.4km Run</td>
+				<td>{{score[5]}}</td>
+				<td>{{grade[5]}}</td>
 			</tr>
 		</table>
+		<a href="{{ url_for('index') }}"><button>Back</button></a>
 	</body>
 </html>
