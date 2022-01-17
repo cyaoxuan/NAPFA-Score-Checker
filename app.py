@@ -49,7 +49,7 @@ def get_award(points):
     elif sum(points) >= 6 and all(point >= 1 for point in points):
         return "Bronze"
     else:
-        return "None"
+        return "-"
 
 app = Flask(__name__)
 

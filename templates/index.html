@@ -2,45 +2,53 @@
 <html>
 	<head>
 		<title>NAPFA Score Checker</title>
-		<link rel="stylesheet" href="static/style.css">
+		<link rel="stylesheet" href="../static/bootstrap.css">
 	</head>
-	<body>
-		<h1>NAPFA Score Checker</h1>
+	<body style="margin:5px;">
+		<h2>NAPFA Score Checker</h2>
 		<form action="{{ url_for('display') }}" method="GET">
-			<p>
-				Gender: <select name="gender"><option value="M">M</option><option value="F">F</option></select>&emsp;&emsp;&emsp;&emsp;	
-				Age: <select name="age">{% for i in range(12,20) %}<option value="{{i}}">{{i}}</option>{% endfor %}</select>
-			</p>
-			<table width="100%" style="text-align:left">
+			<table style="height:40px;">
 				<tr>
-					<th>Station</th>
-					<th>Score</th>
-				</tr>
-				<tr>
-					<td>Sit Up</td>
-					<td><input name="SitUp" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
-				</tr>
-				<tr>
-					<td>Standing Board Jump</td>
-					<td><input name="Jump" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>cm</td>
-				<tr>
-					<td>Sit and Reach</td>
-					<td><input name="SitReach" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>cm</td>
-				</tr>
-				<tr>
-					<td>(Inclined) Pull Up</td>
-					<td><input name="PullUp" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
-				</tr>
-				<tr>
-					<td>Shuttle Run</td>
-					<td><input name="Shuttle" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>s</td>
-				<tr>
-					<td>2.4km Run</td>
-					<td><select name="Run24_min">{% for i in range(6,21) %}<option value={{i}}>{{i}}</option>{% endfor %}</select>min
-						<select name="Run24_s">{% for i in range(0,61) %}<option value={{i}}>{{i}}</option>{% endfor %}</select>s</td>
+					<td style="width:70px;">Gender:</td>
+					<td style="width:100px;"><select name="gender" class="form-select" style="width:90%;"><option value="M">M</option><option value="F">F</option></select></td>
+					<td style="width:40px;">Age:</td>
+					<td style="width:100px;"><select name="age" class="form-select" style="width:90%;">{% for i in range(12,20) %}<option value="{{i}}">{{i}}</option>{% endfor %}</select></td>
 				</tr>
 			</table>
-			<p><input type="submit" value="Check"></p>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Station</th>
+						<th scope="col" colspan="2">Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row" style="vertical-align:middle;">Sit Up</th>
+						<td colspan="2"><input name="SitUp" type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
+					</tr>
+					<tr>
+						<th scope="row" style="vertical-align:middle;">Standing Board Jump</th>
+						<td colspan="2"><input name="Jump" type="text" class="form-control" placeholder="Enter in cm" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
+					<tr>
+						<th scope="row" style="vertical-align:middle;">Sit and Reach</th>
+						<td colspan="2"><input name="SitReach" type="text" class="form-control" placeholder="Enter in cm"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
+					</tr>
+					<tr>
+						<th scope="row" style="vertical-align:middle;">(Inclined) Pull Up</th>
+						<td colspan="2"><input name="PullUp" type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
+					</tr>
+					<tr>
+						<th scope="row" style="vertical-align:middle;">Shuttle Run</th>
+						<td colspan="2"><input name="Shuttle" type="text" class="form-control" placeholder="Enter in seconds"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required></td>
+					<tr>
+						<th scope="row" style="vertical-align:middle;">2.4km Run</th>
+						<td width="30%"><select name="Run24_min" class="form-select">{% for i in range(6,21) %}<option value={{i}}>{{i}} min</option>{% endfor %}</select></td>
+						<td><select name="Run24_s" class="form-select">{% for i in range(0,60) %}<option value={{i}}>{{i}} s</option>{% endfor %}</select></td>
+					</tr>
+				</tbody>
+			</table>
+			<p><input type="submit" value="Check" class="btn btn-primary"></p>
 		</form>
 	</body>
 	<script>
