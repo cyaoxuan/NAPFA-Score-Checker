@@ -5,8 +5,7 @@
 		<link rel="stylesheet" href="../static/bootstrap.css">
 	</head>
 	<body style="margin:5px;">
-		<h2>NAPFA Score Checker Results</h2>
-
+		<h2>NAPFA Score Checker</h2>
 		<table style="height:40px;">
 			<tr>
 				<td style="width:70px;">Gender: </td>
@@ -24,16 +23,24 @@
 					<th scope="col">Grade</th>
 					<th scope="col">Points</th>
 					<th scope="col">Score to Next Grade</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody style="line-height: 37.7px;">
 				{% for i in range(6) %}
 				<tr>
-					<th scope="row">{{stations[i]}}</th>
-					<td >{{scores[i]}}</td>
-					<td>{{grades[i]}}</td>
-					<td>{{points[i]}}</td>
-					<td>{{next_scores[i]}}</td>
+					<th scope="row" width="20%">{{stations[i]}}</th>
+					<td width="10%">{{scores[i]}}</td>
+					<td width="10%">{{grades[i]}}</td>
+					<td width="10%">{{points[i]}}</td>
+					<td width="15%">{{next_scores[i]}}</td>
+					<td width="20%">
+						{% if diffs[i] != None %}
+						<small><i>You're {{diffs[i]}} away from the next grade!</i></small>
+						{% else %}
+						<small><i>Good job!</i></small>
+						{% endif %}
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -55,6 +62,7 @@
 			  <p class="card-text">Bronze: At least an E grade performance in all 6 test items and a total of 6 or more points.</p>
 			</div>
 		  </div>
-		<a href="{{ url_for('index') }}"><button class="btn btn-primary">Back</button></a>
+		<a href="{{ url_for('index') }}"><button class="btn btn-primary">Check Another Score</button></a>
+		<a href="/score_chart/?gender={{gender}}&age={{age}}"><button class="btn btn-primary">Get Score Chart</button></a>
 	</body>
 </html>

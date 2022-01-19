@@ -43,31 +43,27 @@
 						<td colspan="2"><input name="Shuttle" type="number" step="0.1" class="form-control" placeholder="Enter in seconds to 1dp" required></td>
 					<tr>
 						<th scope="row" style="vertical-align:middle;">2.4km Run</th>
-						<td width="30%"><select name="Run24_min" class="form-select">{% for i in range(6,21) %}<option value={{i}}>{{i}} min</option>{% endfor %}</select></td>
-						<td><select name="Run24_s" class="form-select">{% for i in range(0,60) %}<option value={{i}}>{{i}} s</option>{% endfor %}</select></td>
+						<td width="30%"><select name="Run24_min" class="form-select">{% for i in range(6,31) %}<option value={{i}}>{{i}} min</option>{% endfor %}</select></td>
+						<td width="30%"><select name="Run24_s" class="form-select">{% for i in range(0,60) %}<option value={{i}}>{{i}} s</option>{% endfor %}</select></td>
 					</tr>
 				</tbody>
 			</table>
 			<p><input type="submit" value="Check" class="btn btn-primary"></p>
 		</form>
+		<br>
+		<hr>
+		<h2>NAPFA Score Chart</h2>
+		<form action="{{ url_for('score_chart') }}" method="GET">
+			<table style="height:40px;">
+				<tr>
+					<td style="width:70px;">Gender:</td>
+					<td style="width:100px;"><select name="gender" class="form-select" style="width:90%;"><option value="M">M</option><option value="F">F</option></select></td>
+					<td style="width:40px;">Age:</td>
+					<td style="width:100px;"><select name="age" class="form-select" style="width:90%;">{% for i in range(12,20) %}<option value="{{i}}">{{i}}</option>{% endfor %}</select></td>
+				</tr>
+			</table>
+			<br>
+			<p><input type="submit" value="Get Score Chart" class="btn btn-primary"></p>
+		</form>
 	</body>
-	<script>
-		function validate(evt) {
-			var theEvent = evt || window.event;
-
-			// Handle paste
-			if (theEvent.type === 'paste') {
-				key = event.clipboardData.getData('text/plain');
-			} else {
-			// Handle key press
-				var key = theEvent.keyCode || theEvent.which;
-				key = String.fromCharCode(key);
-			}
-			var regex = /[0-9]|\./;
-			if( !regex.test(key) ) {
-				theEvent.returnValue = false;
-				if(theEvent.preventDefault) theEvent.preventDefault();
-			}
-		}
-	</script>
 </html>
